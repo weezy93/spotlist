@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/css/main.css">
+  </head>
+  <body>
+    <nav class="nav">
+      <ul class="nav">
+        <li><a href="/">home</a></li>
+        <li id="login"><a href="/facebook">login</a></li>
+        <li id="logout"><a href="/logout">logout</a></li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
