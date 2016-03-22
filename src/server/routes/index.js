@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
-  failureRedirect: '/facebook',
+  failureRedirect: '/',
 }), function (req, res, next) {
   res.redirect('/');
 });
