@@ -6,6 +6,8 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'spotlist' });
 });
 
+router.get('/facebook', passport.authenticate('facebook'));
+
 router.get('/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/',
 }), function (req, res, next) {

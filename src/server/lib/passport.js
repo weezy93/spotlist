@@ -12,7 +12,7 @@ function Users() {
   return knex('users');
 }
 
-// Needs facebook callback url
+// NOT REACHING THE FACEBOOK CALLBACK TO ASSIGN SOMETHING TO REQ.SESSION
 passport.use(new FacebookStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
