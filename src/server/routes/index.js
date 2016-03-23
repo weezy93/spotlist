@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('../lib/passport');
 
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'title' });
+  res.render('index', { title: 'spotlist' });
 });
 
 router.get('/facebook', passport.authenticate('facebook'));
@@ -20,6 +20,10 @@ router.get('/logout', function (req, res, next) {
   req.logOut();
 
   res.redirect('/');
+});
+
+router.get('/addSpot', function (req, res, next) {
+  res.render('userAddSpot', { styleshee: 'addSpot.css'});
 });
 
 module.exports = router;
