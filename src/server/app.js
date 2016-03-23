@@ -7,14 +7,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 
-
 // *** routes *** //
 var routes = require('./routes/index.js');
-
+var user = require('./routes/user.js');
+var admin = require('./routes/admin.js');
 
 // *** express instance *** //
 var app = express();
-
 
 // *** view engine *** //
 var swig = new swig.Swig();
@@ -43,6 +42,8 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // *** main routes *** //
 app.use('/', routes);
+app.use('/user', user);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
