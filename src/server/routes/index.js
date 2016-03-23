@@ -22,8 +22,4 @@ router.get('/logout', function (req, res, next) {
   res.redirect('/');
 });
 
-router.get('/addSpot', function (req, res, next) {
-  res.render('userAddSpot', { styleshee: 'addSpot.css'});
-});
-
 module.exports = router;
