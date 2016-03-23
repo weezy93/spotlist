@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('../lib/passport');
 
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'spotlist' });
+  res.render('index', { title: 'title' });
 });
 
 router.get('/facebook', passport.authenticate('facebook'));
@@ -11,6 +11,7 @@ router.get('/facebook', passport.authenticate('facebook'));
 router.get('/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/',
 }), function (req, res, next) {
+  console.log('here', req.session);
   res.redirect('/');
 });
 

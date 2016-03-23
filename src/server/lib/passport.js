@@ -22,22 +22,22 @@ passport.use(new FacebookStrategy({
 }, function (accessToken, refreshToken, profile, done) {
   console.log(profile);
 
-  //   Users().where('facebook_id', profile.id).then(function (data) {
-  //   if (data.length) {
-  //     return data[0].id;
-  //   } else {
-  //     return Users().insert({
-  //       facebook_id: profile.id,
-  //       first_name: profile.name.givenName,
-  //       last_name: profile.name.familyName,
-  //     }, 'id').then(function (id) {
-  //       return id[0];
-  //     });
-  //   }
-  // })
-  // .then(function (user) {
-  //   return done(null, user);
-  // });
+  Users().where('facebook_id', profile.id).then(function (data) {
+    if (data.length) {
+      return data[0].id;
+    } else {
+      return Users().insert({
+        facebook_id: profile.id,
+        first_name: profile.name.givenName,
+        last_name: profile.name.familyName,
+      }, 'id').then(function (id) {
+        return id[0];
+      });
+    }
+  })
+  .then(function (user) {
+    return done(null, user);
+  });
 }
 ));
 
