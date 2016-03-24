@@ -4,7 +4,7 @@ var passport = require('../lib/passport');
 var queries = require('./queries/queries.js');
 
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'spotlist', stylesheet: '/main.css' });
+  res.render('index', { title: 'spotlist' });
 });
 
 router.get('/facebook', passport.authenticate('facebook'));
@@ -23,10 +23,8 @@ router.get('/logout', function (req, res, next) {
 
 router.get('/user/:id', function (req, res, next) {
   queries.getSingleUser(req.params.id).then(function (result) {
-    res.render('userProfile', { user: result[0], stylesheet: 'main.css' });
+    res.render('userProfile', { user: result[0] });
   });
 });
-
-// Test user route
 
 module.exports = router;

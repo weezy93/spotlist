@@ -43,7 +43,7 @@ li {
   margin-top: 1rem;
   @include span-columns(4);
 }
-a, a:hover, a:visited {
+nav a, a:hover, a:visited {
   text-decoration: none;
   color: tint($white, 15%);
 }
