@@ -10,5 +10,7 @@ router.get('/user/:id/:location/addSpot', function (req, res, next) {
 });
 
 router.post('/user/:id/:location/addSpot', function (req, res, next) {
+  res.send('added spot');
+
   // Add to user's spot table depending on location
 });

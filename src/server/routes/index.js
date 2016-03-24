@@ -22,4 +22,10 @@ router.get('/logout', function (req, res, next) {
   res.redirect('/');
 });
 
+// Test user route
+
+router.get('/addspot', function (req, res, next) {
+  res.render('userAddSpot');
+});
+
 module.exports = router;
