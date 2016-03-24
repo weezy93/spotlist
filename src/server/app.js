@@ -6,6 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var session = require('express-session');
+var passport = require('./lib/passport');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
@@ -29,9 +31,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-var session = require('express-session');
-var passport = require('./lib/passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(session({
   secret: 'testing',

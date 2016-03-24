@@ -20,8 +20,6 @@ passport.use(new FacebookStrategy({
   state: true,
   profileFields:  ['name', 'displayName'],
 }, function (accessToken, refreshToken, profile, done) {
-  console.log(profile);
-
   Users().where('facebook_id', profile.id).then(function (data) {
     if (data.length) {
       return data[0].id;
