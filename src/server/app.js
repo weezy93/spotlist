@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var cookieSession = require('cookie-session');
 var session = require('express-session');
 var passport = require('./lib/passport');
 
@@ -31,16 +32,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(passport.initialize());
-app.use(passport.session());
-
+app.use(cookieSession({
+  name:'spotlist-auth',
+  keys: [process.env.KEY1, process.env.KEY2, process.env.KEY3],
+}));
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(session({
-  secret: 'testing',
+  secret: process.env.SECRET_KEY || 'change_me',
   resave: false,
   saveUninitialized: true,
 }));
-
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // *** main routes *** //
 app.use('/', routes);
